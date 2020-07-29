@@ -33,7 +33,6 @@ public class SFTP_Client {
     private int port;
 
     private SSHClient sshConn;
-    //private SFTPClient sftp;
 
     public  SFTP_Client(String host, int port, String userName, String password, String keyFilePath , String localFilePath ,String remoteFilePath){
         this.remoteHost=host;
@@ -115,8 +114,7 @@ public class SFTP_Client {
         try {
 
             try (SFTPClient sftp = this.sshConn.newSFTPClient()){
-                final String src = this.localFilePath; //System.getProperty("user.home") + File.separator + "test_file";
-                //final SFTPClient sftp = this.sshConn.newSFTPClient();
+                final String src = this.localFilePath;
                 try {
                     sftp.put(new FileSystemFile(src), this.remoteFilePath);
                 } finally {
